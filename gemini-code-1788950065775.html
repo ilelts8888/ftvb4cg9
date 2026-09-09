@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Tiếng Anh - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #FF7675, #6C5CE7);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px 10px 60px 10px;
+            color: #2d3436;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SVG Background Patterns Overlay */
+        .bg-patterns {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.25;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23FFFFFF"><path d="M20 10l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/><circle cx="80" cy="30" r="8"/><path d="M100 80c0 5-5 10-10 10s-10-5-10-10 5-10 10-10 10 5 10 10z"/><path d="M30 90l5-10 10 5-5 10z"/><path d="M70 100l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></g></svg>');
+            animation: floatPatterns 20s linear infinite;
+        }
+
+        @keyframes floatPatterns {
+            from { background-position: 0 0; }
+            to { background-position: 120px 240px; }
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #6C5CE7;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 10px;
+            border: 2px solid #6C5CE7;
+            transform: rotate(-1deg);
+        }
+
+        .main-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
+        }
+
+        /* Important Reminder Box */
+        .reminder-card {
+            background: #FFF9E6;
+            border: 3px solid #FFEAA7;
+            border-left: 8px solid #FDCB6E;
+            border-radius: 18px;
+            padding: 16px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .reminder-title {
+            color: #D63031;
+            font-weight: 900;
+            font-size: 17px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .reminder-text {
+            color: #2d3436;
+            font-size: 14.5px;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .reminder-highlight {
+            display: block;
+            margin-top: 8px;
+            color: #6C5CE7;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border: 3px solid #F0F0F0;
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+
+        .q-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            border-bottom: 2px dashed #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .q-number {
+            background: #6C5CE7;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 4px 14px;
+            border-radius: 12px;
+            box-shadow: 0 3px 0 #4b38b3;
+        }
+
+        .q-type {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #b2bec3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .q-text {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .q-text u {
+            color: #e84393;
+            font-weight: 900;
+            text-decoration-color: #e84393;
+            text-decoration-thickness: 3px;
+            padding: 0 2px;
+        }
+
+        /* Option Grid / Buttons */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .opt-btn {
+            background: #F8F9FA;
+            border: 2px solid #E9ECEF;
+            border-bottom: 5px solid #DEE2E6;
+            border-radius: 18px;
+            padding: 13px 16px;
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #495057;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            outline: none;
+            user-select: none;
+        }
+
+        .opt-btn:hover:not([disabled]) {
+            transform: translateY(-2px) scale(1.01);
+            background: #EDF2F7;
+            border-color: #CBD5E0;
+        }
+
+        .opt-btn:active:not([disabled]) {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+        }
+
+        .opt-prefix {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #E2E8F0;
+            color: #4A5568;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Correct & Wrong States */
+        .opt-btn.correct {
+            background: #E6F9F0 !important;
+            border-color: #00D26A !important;
+            border-bottom: 5px solid #00A852 !important;
+            color: #007A3D !important;
+        }
+        .opt-btn.correct .opt-prefix {
+            background: #00D26A !important;
+            color: white !important;
+        }
+
+        .opt-btn.wrong {
+            background: #FFEAEA !important;
+            border-color: #FF4757 !important;
+            border-bottom: 5px solid #D63031 !important;
+            color: #C0392B !important;
+            animation: shake 0.4s ease;
+        }
+        .opt-btn.wrong .opt-prefix {
+            background: #FF4757 !important;
+            color: white !important;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* Explanation Box */
+        .explanation-box {
+            display: none;
+            margin-top: 18px;
+            background: #F3F0FF;
+            border: 2px dashed #9B51E0;
+            border-radius: 18px;
+            padding: 16px 18px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .explanation-box.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-head {
+            font-weight: 900;
+            color: #6C5CE7;
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-section {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.55;
+            color: #2d3436;
+        }
+
+        .exp-section strong {
+            color: #6C5CE7;
+        }
+
+        .exp-list {
+            margin-left: 12px;
+            list-style: none;
+        }
+
+        .exp-list li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .exp-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #8854C0;
+            font-weight: bold;
+        }
+
+        /* Submit Bar & Modal */
+        .submit-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .submit-btn {
+            background: #00D26A;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 16px 45px;
+            border: none;
+            border-bottom: 6px solid #00A852;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 210, 106, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: #00E676;
+        }
+
+        .submit-btn:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 28px;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 4px solid #6C5CE7;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-score {
+            font-size: 48px;
+            font-weight: 900;
+            color: #6C5CE7;
+            margin: 10px 0;
+        }
+
+        .modal-msg {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            background: #F8F9FA;
+            padding: 16px;
+            border-radius: 16px;
+            border-left: 5px solid #6C5CE7;
+        }
+
+        .close-modal-btn {
+            background: #6C5CE7;
+            color: white;
+            border: none;
+            border-bottom: 4px solid #4b38b3;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-patterns"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <div class="teacher-badge">👩‍🏫 Giáo viên tạo: Ms Lê Hằng English</div>
+            <h1 class="main-title">🎯 BÀI KIỂM TRA TIẾNG ANH TƯƠNG TÁC</h1>
+        </header>
+
+        <div class="reminder-card">
+            <div class="reminder-title">
+                <span>⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</span>
+            </div>
+            <div class="reminder-text">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+                <span class="reminder-highlight">* Kéo tới đâu, làm tới đó! *</span>
+            </div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="submit-container">
+            <button class="submit-btn" onclick="submitQuiz()">NỘP BÀI THI 🚀</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-card">
+            <div style="font-size: 50px;">🏆</div>
+            <h2 style="font-weight: 900; color:#2d3436;">KẾT QUẢ BÀI LÀM</h2>
+            <div class="modal-score" id="score-text">0 / 20</div>
+            <div class="modal-msg" id="comment-text">...</div>
+            <button class="close-modal-btn" onclick="closeModal()">ĐÓNG VÀ XEM LẠI BÀI 📝</button>
+        </div>
+    </div>
+
+    <script>
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new AudioContext();
+        }
+
+        function playSound(type) {
+            try {
+                initAudio();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                if (type === 'correct') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                } else if (type === 'wrong') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+                    osc.frequency.setValueAtTime(160, audioCtx.currentTime + 0.15);
+                    osc.frequency.setValueAtTime(110, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.45);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.45);
+                }
+            } catch (e) {
+                console.log("Audio waiting for user gesture", e);
+            }
+        }
+
+        const rawQuestions = [
+            // Question 5
+            {
+                type: "VOCABULARY - VERBS",
+                question: "Question 5. Taking care of your health can help you ________ more confident in yourself.",
+                options: [
+                    { text: "worry", correct: false },
+                    { text: "feel", correct: true },
+                    { text: "suffer", correct: false },
+                    { text: "distract", correct: false }
+                ],
+                explanation: {
+                    translation: "Chăm sóc sức khỏe của bạn có thể giúp bạn cảm thấy tự tin hơn vào bản thân.",
+                    optionsDict: [
+                        "A. worry (v): lo lắng",
+                        "B. feel (v): cảm thấy (cụm: feel confident = cảm thấy tự tin)",
+                        "C. suffer (v): chịu đựng",
+                        "D. distract (v): làm xao nhãng"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì động từ 'feel' đi với tính từ 'confident' ('feel confident': cảm thấy tự tin), hợp ngữ cảnh chăm sóc sức khỏe.",
+                    whyIncorrect: "A, C, D không đi kèm trực tiếp với tính từ 'confident' để chỉ cảm xúc tự tin của bản thân."
+                }
+            },
+            // Question 6
+            {
+                type: "GRAMMAR - PAST CONTINUOUS VS PAST SIMPLE",
+                question: "Question 6. When the fire alarm ________ off, we ________ dinner.",
+                options: [
+                    { text: "goes - were cooking", correct: false },
+                    { text: "was going - were cooking", correct: false },
+                    { text: "went - were cooking", correct: true },
+                    { text: "went – cooked", correct: false }
+                ],
+                explanation: {
+                    translation: "Khi chuông báo cháy reo lên, chúng tôi đang nấu bữa tối.",
+                    optionsDict: [
+                        "A. goes - were cooking (Sai thì hiện tại/quá khứ)",
+                        "B. was going - were cooking (Sai vì 'go off' là hành động cắt ngang)",
+                        "C. went - were cooking (Hành động cắt ngang dùng QKĐ, hành động đang diễn ra dùng QKTD)",
+                        "D. went – cooked (Sai thì tiếp diễn)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì hành động đang xảy ra trong quá khứ ('we were cooking dinner') thì có hành động đột ngột cắt ngang ('the fire alarm went off').",
+                    whyIncorrect: "A, B, D chia sai sự phối hợp thì giữa Quá khứ đơn và Quá khứ tiếp diễn với liên từ 'When'."
+                }
+            },
+            // Question 7
+            {
+                type: "VOCABULARY - ADJECTIVES",
+                question: "Question 7. Respect for elders was a ________ tradition in Vietnamese families. Children were expected to listen and learn from their grandparents.",
+                options: [
+                    { text: "temporary", correct: false },
+                    { text: "deep-rooted", correct: true },
+                    { text: "forgotten", correct: false },
+                    { text: "occasional", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôn trọng người lớn tuổi là một truyền thống lâu đời/ăn sâu vào gốc rễ trong các gia đình Việt Nam.",
+                    optionsDict: [
+                        "A. temporary (adj): tạm thời",
+                        "B. deep-rooted (adj): ăn sâu vào gốc rễ, lâu đời",
+                        "C. forgotten (adj): bị lãng quên",
+                        "D. occasional (adj): thỉnh thoảng"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì tính từ ghép 'deep-rooted tradition' nghĩa là truyền thống lâu đời, ăn sâu vào đời sống văn hóa.",
+                    whyIncorrect: "A, C, D trái ngược hoàn toàn về ý nghĩa tôn vinh truyền thống lâu đời."
+                }
+            },
+            // Question 8
+            {
+                type: "COMMUNICATION / DIALOGUE",
+                question: "Question 8. \"Is this a good place to find souvenirs?\" – \"________\"",
+                options: [
+                    { text: "Yes, there are many shops on this street.", correct: true },
+                    { text: "Sure, follow me. I’m always ready for help.", correct: false },
+                    { text: "I’m not sure, maybe ask the prices first.", correct: false },
+                    { text: "Excellent choice, the shirt here is amazing!.", correct: false }
+                ],
+                explanation: {
+                    translation: "\"Đây có phải là một nơi tốt để tìm quà lưu niệm không?\" – \"Có chứ, có rất nhiều cửa hàng trên con phố này.\"",
+                    optionsDict: [
+                        "A. Yes, there are many shops on this street. (Đúng, trả lời trực tiếp cho câu hỏi Yes/No về địa điểm)",
+                        "B. Sure, follow me... (Không phù hợp phong cách trả lời thông tin)",
+                        "C. I’m not sure, maybe ask the prices first. (Không trả lời thẳng vào địa điểm)",
+                        "D. Excellent choice... (Tự nhiên khen cái áo - không hợp ngữ cảnh)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì trả lời xác nhận 'Yes' và đưa ra lý do thuyết phục là phố này có rất nhiều cửa hàng bán quà lưu niệm.",
+                    whyIncorrect: "B, C, D không cung cấp thông tin câu hỏi Yes/No về chất lượng địa điểm mua quà lưu niệm."
+                }
+            },
+            // Question 9
+            {
+                type: "VOCABULARY - IDIOMS / COLLOCATIONS",
+                question: "Question 9. I was so nervous during the presentation, my mind ________ and I couldn’t remember what to say next.",
+                options: [
+                    { text: "went blank", correct: true },
+                    { text: "became exhausted", correct: false },
+                    { text: "went empty", correct: false },
+                    { text: "lacked confidence", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi đã quá hồi hộp trong suốt bài thuyết trình, đầu óc tôi trống rỗng và tôi không thể nhớ nên nói gì tiếp theo.",
+                    optionsDict: [
+                        "A. went blank (cụm: my mind went blank = đầu óc trống rỗng)",
+                        "B. became exhausted (kiệt sức)",
+                        "C. went empty (kết hợp từ sai)",
+                        "D. lacked confidence (thiếu tự tin)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì thành ngữ/cụm cố định 'one's mind goes blank' diễn tả tình trạng đột nhiên không nhớ ra được điều gì.",
+                    whyIncorrect: "B, C, D không phải là thành ngữ chuẩn đi với 'my mind' khi quên sạch nội dung thuyết trình."
+                }
+            },
+            // Question 10
+            {
+                type: "GRAMMAR - VERB PATTERNS",
+                question: "Question 10. Many foreigners recommend ________ Vietnamese coffee, a strong and flavorful brew.",
+                options: [
+                    { text: "tried", correct: false },
+                    { text: "trying", correct: true },
+                    { text: "to try", correct: false },
+                    { text: "to trying", correct: false }
+                ],
+                explanation: {
+                    translation: "Nhiều người nước ngoài khuyên nên thử cà phê Việt Nam, một loại thức uống đậm đà và thơm ngon.",
+                    optionsDict: [
+                        "A. tried (v-ed)",
+                        "B. trying (v-ing)",
+                        "C. to try (to-V)",
+                        "D. to trying (to + v-ing)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì theo quy tắc ngữ pháp: `recommend + V-ing` (khuyên nên làm gì đó).",
+                    whyIncorrect: "A, C, D sai dạng động từ đi trực tiếp sau 'recommend'."
+                }
+            },
+            // Question 11
+            {
+                type: "GRAMMAR - DOUBLE COMPARATIVE",
+                question: "Question 11. The ________ you get to know the locals, the ________ comfortable you might feel in a new city.",
+                options: [
+                    { text: "sooner - least", correct: false },
+                    { text: "sooner - more", correct: true },
+                    { text: "later - most", correct: false },
+                    { text: "soonest - much", correct: false }
+                ],
+                explanation: {
+                    translation: "Bạn càng sớm làm quen với người dân địa phương, bạn càng cảm thấy thoải mái hơn ở một thành phố mới.",
+                    optionsDict: [
+                        "A. sooner - least",
+                        "B. sooner - more (So sánh kép: The + tính từ so sánh hơn ..., the + tính từ so sánh hơn ...)",
+                        "C. later - most",
+                        "D. soonest - much"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì cấu trúc so sánh kép (Càng... thì càng...): `The + comparative ..., the + comparative ...` (`The sooner ..., the more comfortable ...`).",
+                    whyIncorrect: "A, C, D sai cấu trúc chuẩn của so sánh kép."
+                }
+            },
+            // Question 12
+            {
+                type: "VOCABULARY - VERBS",
+                question: "Question 12. The villagers are trying to ________ the process of making pottery to increase production.",
+                options: [
+                    { text: "extend", correct: false },
+                    { text: "lengthen", correct: false },
+                    { text: "decrease", correct: false },
+                    { text: "shorten", correct: true }
+                ],
+                explanation: {
+                    translation: "Các dân làng đang cố gắng rút ngắn quy trình làm gốm để tăng sản lượng.",
+                    optionsDict: [
+                        "A. extend (v): kéo dài (thời gian, hạn)",
+                        "B. lengthen (v): làm cho dài ra",
+                        "C. decrease (v): giảm bớt",
+                        "D. shorten (v): rút ngắn (thời gian, quy trình)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì để 'increase production' (tăng sản lượng) thì người ta phải 'shorten the process' (rút ngắn quy trình làm).",
+                    whyIncorrect: "A và B làm kéo dài thời gian làm giảm năng suất; C sai logic tăng sản lượng."
+                }
+            },
+            // Question 13
+            {
+                type: "ANNOUNCEMENT - ARTICLES",
+                question: "Question 13. We are pleased to announce (13)________ school field trip to the Vietnam Museum of Ethnology...",
+                options: [
+                    { text: "an", correct: false },
+                    { text: "a", correct: true },
+                    { text: "the", correct: false },
+                    { text: "no article", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng tôi xin trân trọng thông báo về một chuyến đi thực tế của trường tới Bảo tàng Dân tộc học Việt Nam...",
+                    optionsDict: [
+                        "A. an (dùng trước nguyên âm)",
+                        "B. a (mạo từ không xác định đứng trước cụm danh từ số ít bắt đầu bằng phụ âm 'school')",
+                        "C. the (mạo từ xác định)",
+                        "D. no article (không mạo từ)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì 'school field trip' là danh từ đếm được số ít lần đầu được nhắc tới, từ 'school' bắt đầu bằng phụ âm /s/ -> Dùng 'a'.",
+                    whyIncorrect: "A sai âm đầu; C chưa xác định đối tượng cụ thể lần đầu thông báo; D thiếu mạo từ."
+                }
+            },
+            // Question 14
+            {
+                type: "ANNOUNCEMENT - WORD FORMATION",
+                question: "Question 14. This educational trip will give students a chance to explore Vietnam’s cultural (14)________.",
+                options: [
+                    { text: "diversity", correct: true },
+                    { text: "diverse", correct: false },
+                    { text: "diversely", correct: false },
+                    { text: "diversify", correct: false }
+                ],
+                explanation: {
+                    translation: "Chuyến đi học tập này sẽ cho học sinh cơ hội khám phá sự đa dạng văn hóa của Việt Nam.",
+                    optionsDict: [
+                        "A. diversity (n): sự đa dạng",
+                        "B. diverse (adj): đa dạng",
+                        "C. diversely (adv): một cách đa dạng",
+                        "D. diversify (v): đa dạng hóa"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì đứng sau sở hữu cách 'Vietnam's' và tính từ 'cultural' phải là một Danh từ -> 'diversity' (cultural diversity = sự đa dạng văn hóa).",
+                    whyIncorrect: "B là tính từ; C là trạng từ; D là động từ."
+                }
+            },
+            // Question 15
+            {
+                type: "ANNOUNCEMENT - ADJECTIVES",
+                question: "Question 15. Please bring: (15)________ clothes and shoes...",
+                options: [
+                    { text: "Attractive", correct: false },
+                    { text: "Luxurious", correct: false },
+                    { text: "Unsuitable", correct: false },
+                    { text: "Comfortable", correct: true }
+                ],
+                explanation: {
+                    translation: "Vui lòng mang theo: quần áo và giày dép thoải mái...",
+                    optionsDict: [
+                        "A. Attractive (adj): hấp dẫn, thu hút",
+                        "B. Luxurious (adj): sang trọng",
+                        "C. Unsuitable (adj): không phù hợp",
+                        "D. Comfortable (adj): thoải mái, dễ chịu"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì khi đi dã ngoại/đi bộ thực tế ('field trip'), học sinh cần mặc 'comfortable clothes and shoes' (quần áo và giày thoải mái).",
+                    whyIncorrect: "A, B, C không phù hợp với mục đích di chuyển vận động ngoài trời."
+                }
+            },
+            // Question 16
+            {
+                type: "ANNOUNCEMENT - SUBJECT-VERB AGREEMENT",
+                question: "Question 16. Note: Permission slips (16)________ due by Wednesday, January 17, 2025.",
+                options: [
+                    { text: "are", correct: true },
+                    { text: "is", correct: false },
+                    { text: "be", correct: false },
+                    { text: "was", correct: false }
+                ],
+                explanation: {
+                    translation: "Lưu ý: Giấy phép của phụ huynh phải được nộp trước Thứ Tư, ngày 17 tháng 1 năm 2025.",
+                    optionsDict: [
+                        "A. are (Động từ To be hiện tại số nhiều)",
+                        "B. is (Động từ To be hiện tại số ít)",
+                        "C. be (To be nguyên mẫu)",
+                        "D. was (To be quá khứ)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì chủ ngữ 'Permission slips' là danh từ số nhiều, thông báo ở hiện tại -> Dùng 'are'.",
+                    whyIncorrect: "B sai số ít; C chưa chia; D sai thì quá khứ."
+                }
+            },
+            // Question 17
+            {
+                type: "TEXT ORDERING - LOGICAL SEQUENCE",
+                question: "Question 17. Put the sentences (a-c) in the correct order, then fill in the blank to make a logical text.<br><em>\"I always thought that being healthy was just about eating right, but after trying a new routine, I realized there's more to it. ________\"</em><br>a. I also made sure to balance my school work with some downtime to reduce stress.<br>b. I started with eating more fruits and vegetables, while cutting back on junk food.<br>c. I added daily exercise, like jogging and yoga, to keep both my body and mind fit.",
+                options: [
+                    { text: "b - a - c", correct: false },
+                    { text: "a - c - b", correct: false },
+                    { text: "c - b - a", correct: false },
+                    { text: "b - c - a", correct: true }
+                ],
+                explanation: {
+                    translation: "Sắp xếp các câu (a-c) theo thứ tự logic để hoàn thành đoạn văn:",
+                    optionsDict: [
+                        "A. b - a - c",
+                        "B. a - c - b",
+                        "C. c - b - a",
+                        "D. b - c - a (Đúng trình tự từ ăn uống -> tập luyện -> cân bằng tâm lý)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì mạch logic:<br>1. (b) 'I started with...' (Tôi bắt đầu bằng việc ăn uống lành mạnh).<br>2. (c) 'I added...' (Tôi thêm bài tập thể dục hàng ngày).<br>3. (a) 'I also made sure...' (Tôi cũng đảm bảo cân bằng học tập và nghỉ ngơi - có từ 'also' bổ sung).",
+                    whyIncorrect: "A, B, C vi phạm vị trí bắt đầu ('started with') và từ nối bổ sung ('also')."
+                }
+            },
+            // Question 18
+            {
+                type: "TEXT ENDING - CONCLUSION",
+                question: "Question 18. Choose the sentence that can end the text (in Question 17) most appropriately:",
+                options: [
+                    { text: "As a result, I felt more focused and had more energy to complete my tasks.", correct: true },
+                    { text: "It was difficult to keep up with all the changes, so I gave up after a week.", correct: false },
+                    { text: "Despite my efforts, I didn't see any changes, so I decided to try something new.", correct: false },
+                    { text: "I didn't see any immediate results, but I stuck with it because I knew it would help in the long run.", correct: false }
+                ],
+                explanation: {
+                    translation: "Chọn câu kết thúc bài viết (ở Câu 17) một cách phù hợp nhất:",
+                    optionsDict: [
+                        "A. Kết quả là, tôi cảm thấy tập trung hơn và có nhiều năng lượng hơn để hoàn thành các nhiệm vụ.",
+                        "B. Khó quá nên tôi từ bỏ sau 1 tuần - Tiêu cực",
+                        "C. Không thấy thay đổi gì nên tôi thử cái khác - Mâu thuẫn",
+                        "D. Không thấy kết quả ngay..."
+                    ],
+                    whyCorrect: "Đáp án A đúng vì nêu được kết quả tích cực và trọn vẹn ('As a result...') sau khi áp dụng lối sống lành mạnh.",
+                    whyIncorrect: "B, C, D mâu thuẫn với tinh thần tích cực của bài viết về việc duy trì thói quen tốt."
+                }
+            },
+            // Question 19
+            {
+                type: "READING CLOZE - NOUN PHRASE",
+                question: "Question 19. In Vietnamese culture, respecting ancestors is an (19)________.",
+                options: [
+                    { text: "important tradition", correct: true },
+                    { text: "traditionally important", correct: false },
+                    { text: "importance traditional", correct: false },
+                    { text: "traditionally importance", correct: false }
+                ],
+                explanation: {
+                    translation: "Trong văn hóa Việt Nam, tôn kính tổ tiên là một truyền thống quan trọng.",
+                    optionsDict: [
+                        "A. important tradition (Cụm danh từ: Mạo từ 'an' + Tính từ 'important' + Danh từ 'tradition')",
+                        "B. traditionally important (Trạng từ + Tính từ)",
+                        "C. importance traditional (Trật tự từ sai)",
+                        "D. traditionally importance (Sai từ loại)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì đứng sau mạo từ 'an' và làm bổ ngữ cho vế trước 'is an...' phải là Cụm danh từ: `Tính từ (important) + Danh từ (tradition)`.",
+                    whyIncorrect: "B thiếu danh từ làm trung tâm; C và D trật tự từ loại sai ngữ pháp."
+                }
+            },
+            // Question 20
+            {
+                type: "READING CLOZE - QUANTIFIERS",
+                question: "Question 20. In the past, many families lived in extended households, with (20)________ generations living together.",
+                options: [
+                    { text: "much", correct: false },
+                    { text: "one", correct: false },
+                    { text: "multiple", correct: true },
+                    { text: "a little", correct: false }
+                ],
+                explanation: {
+                    translation: "Trong quá khứ, nhiều gia đình sống trong đại gia đình, với nhiều thế hệ sống cùng nhau.",
+                    optionsDict: [
+                        "A. much (đi với danh từ không đếm được)",
+                        "B. one (một thế hệ - không phải đại gia đình)",
+                        "C. multiple (adj): nhiều, đa dạng (multiple generations = nhiều thế hệ)",
+                        "D. a little (đi với danh từ không đếm được)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì 'extended households' (đại gia đình) mang đặc trưng là 'multiple generations' (nhiều thế hệ) cùng chung sống.",
+                    whyIncorrect: "A và D dùng sai cho danh từ đếm được số nhiều 'generations'; B trái nghĩa với 'extended households'."
+                }
+            },
+            // Question 21
+            {
+                type: "READING CLOZE - ADVERBS",
+                question: "Question 21. Special ceremonies, (21)________ during Tet (the Vietnamese New Year), were held to invite the spirits of ancestors...",
+                options: [
+                    { text: "especially", correct: true },
+                    { text: "luckily", correct: false },
+                    { text: "mostly", correct: false },
+                    { text: "mainly", correct: false }
+                ],
+                explanation: {
+                    translation: "Các nghi lễ đặc biệt, đặc biệt là vào dịp Tết, được tổ chức để mời hương linh tổ tiên...",
+                    optionsDict: [
+                        "A. especially (adv): đặc biệt là (nhấn mạnh mốc thời gian nổi bật 'during Tet')",
+                        "B. luckily (adv): may mắn thay",
+                        "C. mostly (adv): hầu hết",
+                        "D. mainly (adv): chủ yếu"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì 'especially' được dùng để đưa ra một ví dụ cụ thể, nổi bật nhất ('especially during Tet').",
+                    whyIncorrect: "B, C, D không mang tính nhấn mạnh điểm hình mẫu thời gian đặc thù bằng 'especially'."
+                }
+            },
+            // Question 22
+            {
+                type: "READING CLOZE - VERBS",
+                question: "Question 22. This practice helped (22)________ a strong sense of family identity and continuity.",
+                options: [
+                    { text: "reduce", correct: false },
+                    { text: "foster", correct: true },
+                    { text: "weaken", correct: false },
+                    { text: "focus", correct: false }
+                ],
+                explanation: {
+                    translation: "Tập tục này đã giúp nuôi dưỡng/thúc đẩy ý thức mạnh mẽ về bản sắc và sự nối tiếp của gia đình.",
+                    optionsDict: [
+                        "A. reduce (v): giảm bớt",
+                        "B. foster (v): nuôi dưỡng, bồi đắp, thúc đẩy",
+                        "C. weaken (v): làm suy yếu",
+                        "D. focus (v): tập trung"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì 'foster a strong sense of...' là cụm từ chuẩn mang nghĩa bồi đắp/nuôi dưỡng tinh thần gắn kết gia đình.",
+                    whyIncorrect: "A và C mang nghĩa tiêu cực; D không đi trực tiếp với 'a sense of...'."
+                }
+            },
+            // Question 23
+            {
+                type: "READING CLOZE - PARALLEL STRUCTURE",
+                question: "Question 23. Families would gather around the altar, sharing stories and (23)________ gratitude for the blessings...",
+                options: [
+                    { text: "expressing", correct: true },
+                    { text: "express", correct: false },
+                    { text: "expressed", correct: false },
+                    { text: "to express", correct: false }
+                ],
+                explanation: {
+                    translation: "Các gia đình sẽ quây quần bên bàn thờ, chia sẻ những câu chuyện và bày tỏ lòng biết ơn đối với những phước lành...",
+                    optionsDict: [
+                        "A. expressing (v-ing)",
+                        "B. express (v)",
+                        "C. expressed (v-ed)",
+                        "D. to express (to-V)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì cấu trúc song song đi với liên từ 'and': 'sharing stories and expressing gratitude' (hai động từ dạng V-ing song hành).",
+                    whyIncorrect: "B, C, D vi phạm cấu trúc song song với động từ 'sharing'."
+                }
+            },
+            // Question 24
+            {
+                type: "READING CLOZE - PHRASAL VERBS",
+                question: "Question 24. By remembering and honoring the past, traditions and values were (24)________ from one generation to the next...",
+                options: [
+                    { text: "passed away", correct: false },
+                    { text: "came down", correct: false },
+                    { text: "took off", correct: false },
+                    { text: "passed down", correct: true }
+                ],
+                explanation: {
+                    translation: "Bằng cách ghi nhớ và tôn vinh quá khứ, các truyền thống và giá trị đã được lưu truyền từ thế hệ này sang thế hệ khác...",
+                    optionsDict: [
+                        "A. passed away (phr v): qua đời",
+                        "B. came down (phr v): đi xuống, mắc bệnh",
+                        "C. took off (phr v): cất cánh, cởi ra",
+                        "D. passed down (phr v): truyền lại, lưu truyền (pass down from... to...)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì cụm động từ 'pass down from generation to generation' nghĩa là lưu truyền qua các thế hệ.",
+                    whyIncorrect: "A, B, C sai nghĩa hoàn toàn khi nói về việc trao truyền di sản văn hóa truyền thống."
+                }
+            }
+        ];
+
+        let questions = [];
+
+        function shuffleArray(array) {
+            let cur = array.slice();
+            for (let i = cur.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cur[i], cur[j]] = [cur[j], cur[i]];
+            }
+            return cur;
+        }
+
+        function initQuiz() {
+            questions = rawQuestions.map(q => {
+                let shuffledOpts = shuffleArray(q.options);
+                return {
+                    ...q,
+                    shuffledOptions: shuffledOpts,
+                    userAnswerIndex: null
+                };
+            });
+            renderQuiz();
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+
+                const optionsHTML = q.shuffledOptions.map((opt, optIdx) => {
+                    const letters = ['A', 'B', 'C', 'D'];
+                    return `
+                        <button class="opt-btn" id="opt-${idx}-${optIdx}" onclick="selectAnswer(${idx}, ${optIdx})">
+                            <span class="opt-prefix">${letters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                }).join('');
+
+                const exp = q.explanation;
+                const expDictHTML = exp.optionsDict.map(item => `<li>${item}</li>`).join('');
+
+                card.innerHTML = `
+                    <div class="q-header">
+                        <span class="q-number">Câu ${idx + 1} / ${questions.length}</span>
+                        <span class="q-type">${q.type}</span>
+                    </div>
+                    <div class="q-text">${q.question}</div>
+                    <div class="options-grid">
+                        ${optionsHTML}
+                    </div>
+                    <div class="explanation-box" id="exp-${idx}">
+                        <div class="exp-head">💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:</div>
+                        <div class="exp-section"><strong>1. Dịch câu hỏi:</strong> ${exp.translation}</div>
+                        <div class="exp-section">
+                            <strong>2. Phân tích 4 đáp án:</strong>
+                            <ul class="exp-list">${expDictHTML}</ul>
+                        </div>
+                        <div class="exp-section"><strong>3. Tại sao chọn đáp án này?</strong> ${exp.whyCorrect}</div>
+                        <div class="exp-section"><strong>4. Tại sao các đáp án khác sai?</strong> ${exp.whyIncorrect}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function selectAnswer(qIdx, optIdx) {
+            const q = questions[qIdx];
+            if (q.userAnswerIndex !== null) return;
+
+            q.userAnswerIndex = optIdx;
+            const selectedOpt = q.shuffledOptions[optIdx];
+            const isCorrect = selectedOpt.correct;
+
+            const selectedBtn = document.getElementById(`opt-${qIdx}-${optIdx}`);
+
+            if (isCorrect) {
+                selectedBtn.classList.add('correct');
+                playSound('correct');
+                triggerConfetti();
+            } else {
+                selectedBtn.classList.add('wrong');
+                playSound('wrong');
+
+                q.shuffledOptions.forEach((o, i) => {
+                    if (o.correct) {
+                        document.getElementById(`opt-${qIdx}-${i}`).classList.add('correct');
+                    }
+                });
+            }
+
+            q.shuffledOptions.forEach((_, i) => {
+                const b = document.getElementById(`opt-${qIdx}-${i}`);
+                b.disabled = true;
+                b.style.cursor = 'default';
+            });
+
+            document.getElementById(`exp-${qIdx}`).classList.add('show');
+        }
+
+        function submitQuiz() {
+            let correctCount = 0;
+
+            questions.forEach(q => {
+                if (q.userAnswerIndex !== null && q.shuffledOptions[q.userAnswerIndex].correct) {
+                    correctCount++;
+                }
+            });
+
+            const total = questions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('score-text').innerText = `${correctCount} / ${total} (${percentage}%)`;
+
+            let comment = "";
+            if (percentage < 50) {
+                comment = "Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (percentage <= 80) {
+                comment = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else {
+                comment = "Làm tốt lắm, con cố gắng rinh điểm 10 ở lần sau nha!";
+                triggerConfetti();
+            }
+
+            document.getElementById('comment-text').innerText = comment;
+            document.getElementById('result-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#8854C0', '#FDCB6E', '#00C9A7', '#FF7675', '#6C5CE7', '#00D26A'];
+
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 14,
+                    vy: (Math.random() - 0.7) * 14,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    life: 90
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+
+                particles.forEach(p => {
+                    if (p.life > 0) {
+                        alive = true;
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.4;
+                        p.life -= 2;
+                        ctx.fillStyle = p.color;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+
+                if (alive) requestAnimationFrame(animate);
+                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            animate();
+        }
+
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
